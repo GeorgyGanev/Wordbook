@@ -37,10 +37,42 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="vmz-eQ-fRp" kind="show" identifier="goToItems" id="rQK-lx-adS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ll3-o7-8T0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1020.6106870229007" y="-51.408450704225352"/>
+        </scene>
+        <!--Words-->
+        <scene sceneID="FrF-DI-g26">
+            <objects>
+                <tableViewController id="vmz-eQ-fRp" customClass="ItemsViewController" customModule="Wordbook" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="5W9-KQ-b2e">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WordItemCell" id="Xin-Vm-8Ue">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Xin-Vm-8Ue" id="e34-mU-F6D">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="vmz-eQ-fRp" id="owr-eM-OvU"/>
+                            <outlet property="delegate" destination="vmz-eQ-fRp" id="8nc-8r-TbQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Words" id="1K3-1w-Qqj"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y1I-3L-sbU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1888" y="-51"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mxY-Rq-v8t">

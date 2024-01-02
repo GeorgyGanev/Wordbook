@@ -3,4 +3,8 @@
     <entity name="Wordbook" representedClassName="Wordbook" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
     </entity>
+    <entity name="WordItem" representedClassName="WordItem" syncable="YES" codeGenerationType="class">
+        <attribute name="definition" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+    </entity>
 </model>

@@ -26,9 +26,7 @@ class CategoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WordbookCell", for: indexPath)
-
         cell.textLabel?.text = wordbookArray[indexPath.row].name
-
         return cell
     }
  
@@ -46,6 +44,7 @@ class CategoryViewController: UITableViewController {
     
     func deleteWordbook(at index: Int) {
         context.delete(wordbookArray[index])
+        wordbookArray.remove(at: index)
         saveWordbook()
     }
     
@@ -61,6 +60,10 @@ class CategoryViewController: UITableViewController {
     
     //MARK: - TableVIew Delegate Methods
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteWordbook(at: indexPath.row)
@@ -74,10 +77,12 @@ class CategoryViewController: UITableViewController {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add New Language", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            let newWordbook = Wordbook(context: self.context)
-            newWordbook.name = textField.text
-            self.wordbookArray.append(newWordbook)
-            self.saveWordbook()
+            if textField.text != "" {
+                let newWordbook = Wordbook(context: self.context)
+                newWordbook.name = textField.text
+                self.wordbookArray.append(newWordbook)
+                self.saveWordbook()
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -95,28 +100,6 @@ class CategoryViewController: UITableViewController {
     }
     
     
-  
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
 
     /*
     // MARK: - Navigation
