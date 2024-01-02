@@ -44,6 +44,11 @@ class CategoryViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    func deleteWordbook(at index: Int) {
+        context.delete(wordbookArray[index])
+        saveWordbook()
+    }
+    
     func loadWordbooks () {
         let request: NSFetchRequest<Wordbook> = Wordbook.fetchRequest()
         do {
@@ -55,6 +60,12 @@ class CategoryViewController: UITableViewController {
     }
     
     //MARK: - TableVIew Delegate Methods
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteWordbook(at: indexPath.row)
+        }
+    }
     
     //MARK: - Add New Wordbook Category
     
