@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -75,10 +76,60 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="NXd-yZ-bim" kind="show" identifier="goToDefinition" id="Hx7-jm-fWm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1I-3L-sbU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1888" y="-51"/>
+        </scene>
+        <!--Definition View Controller-->
+        <scene sceneID="b7x-7z-eCA">
+            <objects>
+                <viewController id="NXd-yZ-bim" customClass="DefinitionViewController" customModule="Wordbook" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="B1m-qo-cit">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKN-ZP-cHN">
+                                <rect key="frame" x="0.0" y="103" width="373" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4AY-qI-3EI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Definition" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rwj-Tw-DTx">
+                                <rect key="frame" x="20" y="173" width="373" height="645"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4Fq-Cl-IAu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Rwj-Tw-DTx" firstAttribute="leading" secondItem="4Fq-Cl-IAu" secondAttribute="leading" constant="20" id="1uD-bP-vyL"/>
+                            <constraint firstItem="4Fq-Cl-IAu" firstAttribute="bottom" secondItem="Rwj-Tw-DTx" secondAttribute="bottom" id="30j-LG-SFp"/>
+                            <constraint firstItem="Rwj-Tw-DTx" firstAttribute="top" secondItem="zKN-ZP-cHN" secondAttribute="bottom" constant="20" id="4Zb-7E-NCU"/>
+                            <constraint firstItem="zKN-ZP-cHN" firstAttribute="top" secondItem="4Fq-Cl-IAu" secondAttribute="top" id="57o-8I-CA7"/>
+                            <constraint firstItem="zKN-ZP-cHN" firstAttribute="leading" secondItem="4Fq-Cl-IAu" secondAttribute="leading" id="CZK-Vg-su6"/>
+                            <constraint firstItem="4Fq-Cl-IAu" firstAttribute="trailing" secondItem="zKN-ZP-cHN" secondAttribute="trailing" constant="20" id="mQI-ka-fXd"/>
+                            <constraint firstItem="4Fq-Cl-IAu" firstAttribute="trailing" secondItem="Rwj-Tw-DTx" secondAttribute="trailing" id="sCd-t0-den"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="mke-9p-Lhb" customClass="de"/>
+                    <connections>
+                        <outlet property="definitionView" destination="Rwj-Tw-DTx" id="X5X-Qa-gjN"/>
+                        <outlet property="wordLable" destination="zKN-ZP-cHN" id="RCD-5f-ran"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pWu-0z-OYI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2686.2595419847326" y="-51.408450704225352"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mxY-Rq-v8t">
@@ -100,6 +151,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

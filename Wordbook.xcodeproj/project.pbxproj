@@ -15,6 +15,7 @@
 		663FD8372B44415F00CC5701 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 663FD8352B44415F00CC5701 /* LaunchScreen.storyboard */; };
 		663FD83F2B4448A700CC5701 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663FD83E2B4448A700CC5701 /* CategoryViewController.swift */; };
 		663FD8442B447F2000CC5701 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663FD8432B447F2000CC5701 /* ItemsViewController.swift */; };
+		663FD8462B45589800CC5701 /* DefinitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663FD8452B45589800CC5701 /* DefinitionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		663FD8382B44415F00CC5701 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		663FD83E2B4448A700CC5701 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		663FD8432B447F2000CC5701 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
+		663FD8452B45589800CC5701 /* DefinitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				663FD83E2B4448A700CC5701 /* CategoryViewController.swift */,
 				663FD8432B447F2000CC5701 /* ItemsViewController.swift */,
+				663FD8452B45589800CC5701 /* DefinitionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				663FD8442B447F2000CC5701 /* ItemsViewController.swift in Sources */,
+				663FD8462B45589800CC5701 /* DefinitionViewController.swift in Sources */,
 				663FD83F2B4448A700CC5701 /* CategoryViewController.swift in Sources */,
 				663FD8322B44415E00CC5701 /* Wordbook.xcdatamodeld in Sources */,
 				663FD8282B44415E00CC5701 /* AppDelegate.swift in Sources */,
