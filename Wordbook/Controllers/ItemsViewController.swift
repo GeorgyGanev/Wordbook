@@ -44,11 +44,16 @@ class ItemsViewController: UITableViewController {
 
     //MARK: - TableView Data Manipulation Methods
     
-    func loadWordItems(with request: NSFetchRequest<WordItem> = WordItem.fetchRequest()) {
-        //let request: NSFetchRequest<WordItem> = WordItem.fetchRequest()
-        
+    func loadWordItems(with request: NSFetchRequest<WordItem> = WordItem.fetchRequest(), predicate: NSPredicate? = nil) {
+      
         let wordbookPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", parentCategory!.name!)
-        request.predicate = wordbookPredicate
+        
+        if let additionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [additionalPredicate, wordbookPredicate])
+        } else {
+            request.predicate = wordbookPredicate
+        }
+        
         
         do {
            try wordItemsArray = context.fetch(request)
@@ -124,5 +129,33 @@ class ItemsViewController: UITableViewController {
         }
         
     }
+
+}
+
+
+//MARK: - Search Methods
+
+extension ItemsViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        guard let searchText = searchBar.text else {return}
+        
+        let request: NSFetchRequest<WordItem> = WordItem.fetchRequest()
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchText)
+        loadWordItems(with: request, predicate: predicate)
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadWordItems()
+            
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
     
 }
+
