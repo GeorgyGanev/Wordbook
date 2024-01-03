@@ -129,9 +129,16 @@
                             <constraint firstItem="4Fq-Cl-IAu" firstAttribute="trailing" secondItem="Rwj-Tw-DTx" secondAttribute="trailing" id="sCd-t0-den"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mke-9p-Lhb" customClass="de"/>
+                    <navigationItem key="navigationItem" id="mke-9p-Lhb" customClass="de">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="36y-z5-Pm8">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="NXd-yZ-bim" id="5m5-VH-b39"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="definitionView" destination="Rwj-Tw-DTx" id="X5X-Qa-gjN"/>
+                        <outlet property="saveButton" destination="36y-z5-Pm8" id="zbw-Od-iBe"/>
                         <outlet property="wordLable" destination="zKN-ZP-cHN" id="RCD-5f-ran"/>
                     </connections>
                 </viewController>

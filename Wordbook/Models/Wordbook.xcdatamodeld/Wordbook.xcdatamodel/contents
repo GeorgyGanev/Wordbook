@@ -5,7 +5,7 @@
         <relationship name="items" toMany="YES" deletionRule="Nullify" destinationEntity="WordItem" inverseName="parentCategory" inverseEntity="WordItem"/>
     </entity>
     <entity name="WordItem" representedClassName="WordItem" syncable="YES" codeGenerationType="class">
-        <attribute name="definition" attributeType="String"/>
+        <attribute name="definition" optional="YES" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="parentCategory" maxCount="1" deletionRule="Nullify" destinationEntity="Wordbook" inverseName="items" inverseEntity="Wordbook"/>
     </entity>

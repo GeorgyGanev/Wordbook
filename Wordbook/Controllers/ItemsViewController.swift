@@ -72,35 +72,36 @@ class ItemsViewController: UITableViewController {
         }
         tableView.reloadData()
     }
+    
+    func deleteWordItem(at index: Int) {
+        context.delete(wordItemsArray[index])
+        wordItemsArray.remove(at: index)
+        saveWordItem()
+    }
         
     //MARK: - Add New WordItem
     
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
         var titleTextField = UITextField()
-        var definitionTextField = UITextField()
-        
+      
         let alert = UIAlertController(title: "Add New Word", message: nil, preferredStyle: .alert)
         
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "New Word"
             titleTextField = alertTextField
         }
-        
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Definition"
-            definitionTextField = alertTextField
-        }
-        
+    
         let actionAdd = UIAlertAction(title: "Add", style: .default) { (alertAction) in
-            if let title = titleTextField.text, let definition = definitionTextField.text {
-                let newWord = WordItem(context: self.context)
-                newWord.title = title
-                newWord.definition = definition
-                newWord.parentCategory = self.parentCategory
-                self.wordItemsArray.append(newWord)
-                self.saveWordItem()
-            
+            if let title = titleTextField.text {
+                if title != "" {
+                    let newWord = WordItem(context: self.context)
+                    newWord.title = title
+                    //newWord.definition = definition
+                    newWord.parentCategory = self.parentCategory
+                    self.wordItemsArray.append(newWord)
+                    self.saveWordItem()
+                }
             }
         }
         
@@ -119,17 +120,19 @@ class ItemsViewController: UITableViewController {
         performSegue(withIdentifier: "goToDefinition", sender: self)
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            deleteWordItem(at: indexPath.row)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! DefinitionViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.word = wordItemsArray[indexPath.row].title!
-            destinationVC.definition = wordItemsArray[indexPath.row].definition!
-            
+            destinationVC.wordItem = wordItemsArray[indexPath.row]
         }
-        
     }
-
 }
 
 
