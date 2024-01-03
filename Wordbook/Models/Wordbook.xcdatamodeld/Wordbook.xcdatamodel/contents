@@ -2,9 +2,11 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Wordbook" representedClassName="Wordbook" syncable="YES" codeGenerationType="class">
         <attribute name="name" attributeType="String"/>
+        <relationship name="items" toMany="YES" deletionRule="Nullify" destinationEntity="WordItem" inverseName="parentCategory" inverseEntity="WordItem"/>
     </entity>
     <entity name="WordItem" representedClassName="WordItem" syncable="YES" codeGenerationType="class">
         <attribute name="definition" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
+        <relationship name="parentCategory" maxCount="1" deletionRule="Nullify" destinationEntity="Wordbook" inverseName="items" inverseEntity="Wordbook"/>
     </entity>
 </model>

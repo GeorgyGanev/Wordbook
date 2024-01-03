@@ -61,7 +61,15 @@ class CategoryViewController: UITableViewController {
     //MARK: - TableVIew Delegate Methods
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "goToItems", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ItemsViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.parentCategory = wordbookArray[indexPath.row]
+        }
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -69,6 +77,7 @@ class CategoryViewController: UITableViewController {
             deleteWordbook(at: indexPath.row)
         }
     }
+    
     
     //MARK: - Add New Wordbook Category
     
@@ -98,17 +107,5 @@ class CategoryViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
         
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+ 
 }

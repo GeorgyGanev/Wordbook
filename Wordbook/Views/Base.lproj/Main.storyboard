@@ -68,7 +68,13 @@
                             <outlet property="delegate" destination="vmz-eQ-fRp" id="8nc-8r-TbQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Words" id="1K3-1w-Qqj"/>
+                    <navigationItem key="navigationItem" title="Words" id="1K3-1w-Qqj">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="o6o-dj-bC0">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="vmz-eQ-fRp" id="Cpw-Jn-yWK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y1I-3L-sbU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
